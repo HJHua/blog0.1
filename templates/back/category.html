@@ -1,0 +1,97 @@
+{% extends 'back/base.html' %}
+ {% block title %}
+文章分类
+  {% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='back/css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='back/css/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='back/css/font-awesome.min.css')}}">
+{% endblock %}
+{% block image %}{{ super() }}{% endblock %}
+{% block js %}{{ super() }}{% endblock %}
+{% block act %}
+  <div class="row">
+    <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li ><a href="/back/index/">报告</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li ><a href="/back/article/">文章</a></li>
+        <li><a href="#">公告</a></li>
+        <li><a href="#">评论</a></li>
+        <li><a data-toggle="tooltip" data-placement="top" title="网站暂无留言功能">留言</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/back/category/">分类</a></li>
+        <li ><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其他</a>
+          <ul class="dropdown-menu" aria-labelledby="otherMenu">
+            <li><a href="#">友情链接</a></li>
+            <li><a href="/back/loginlog/">访问记录</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a class="dropdown-toggle" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">用户</a>
+          <ul class="dropdown-menu" aria-labelledby="userMenu">
+            <li><a href="#">管理用户组</a></li>
+            <li><a href="/back/manage-user/">管理用户</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/back/loginlog/">管理登录日志</a></li>
+          </ul>
+        </li>
+        <li><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">设置</a>
+          <ul class="dropdown-menu" aria-labelledby="settingMenu">
+            <li><a href="#">基本设置</a></li>
+            <li><a href="#">用户设置</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">安全配置</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="disabled"><a>扩展菜单</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    {% endblock %}
+{% block body %}{{ super() }}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <div class="row">
+        <div class="col-md-5">
+          <h1 class="page-header">添加</h1>
+          <form action="" method="post" autocomplete="off">
+            <button class="btn btn-primary" type="submit" name="submit">添加分类名</button>
+          </form>
+        </div>
+        <div class="col-md-7">
+          <h1 class="page-header">分类管理 <span class="badge"></span></h1>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th><span class="glyphicon glyphicon-paperclip"></span> <span class="visible-lg">ID</span></th>
+                  <th><span class="glyphicon glyphicon-file"></span> <span class="visible-lg">名称</span></th>
+                  <th><span class="glyphicon glyphicon-pencil"></span> <span class="visible-lg">操作</span></th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for type in types %}
+                <tr>
+                  <td>{{ type.id }}</td>
+                  <td>{{ type.t_name }}</td>
+                  <td><a href="{{ url_for('back.update_category',id=type.id )}}">修改</a>
+                    <a rel="1" href="{{ url_for('back.del_article_type',id=type.id )}}">删除</a></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            <span class="prompt-text"><strong>注：</strong>删除一个分类也会删除分类下的文章和子分类,请谨慎删除!</span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+
+</script>
+  {% endblock %}

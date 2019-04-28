@@ -1,0 +1,58 @@
+{% extends 'back/base.html' %}
+{% block act %}
+  <div class="row">
+    <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li ><a href="/back/index/">报告</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li ><a href="/back/article/">文章</a></li>
+        <li><a href="#">公告</a></li>
+        <li><a href="#">评论</a></li>
+        <li><a data-toggle="tooltip" data-placement="top" title="网站暂无留言功能">留言</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/back/category/">分类</a></li>
+        <li ><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其他</a>
+          <ul class="dropdown-menu" aria-labelledby="otherMenu">
+            <li><a href="#">友情链接</a></li>
+            <li><a href="/back/loginlog/">访问记录</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li ><a class="dropdown-toggle" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">用户</a>
+          <ul class="dropdown-menu" aria-labelledby="userMenu">
+            <li><a href="#">管理用户组</a></li>
+            <li><a href="/back/manage-user/">管理用户</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/back/loginlog/">管理登录日志</a></li>
+          </ul>
+        </li>
+        <li><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">设置</a>
+          <ul class="dropdown-menu" aria-labelledby="settingMenu">
+            <li><a href="#">基本设置</a></li>
+            <li><a href="#">用户设置</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">安全配置</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="disabled"><a>扩展菜单</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    {% endblock %}
+{% block body %}{{ super() }}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <h1 class="page-header">添加文章分类</h1>
+      <form action="" method="post">
+        <div class="form-group">
+          <label for="category-name">分类名称</label>
+
+          <input type="text" id="category-name" name="atype" value="" class="form-control" placeholder="在此处输入分类名称"  required autocomplete="off">
+
+          <button class="btn btn-primary" type="submit" name="submit">添加</button>
+        </div>
+      </form>
+    </div>
+{% endblock %}
